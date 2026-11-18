@@ -100,3 +100,7 @@ dialog::backdrop { background:#0a1f3dbb; }
 .guided-zones fieldset { border:1px solid var(--stone); margin:.6rem 0 0; padding:.55rem .7rem; }
 #guided-zone-options label { display:flex; align-items:center; gap:.5rem; min-height:36px; cursor:pointer; }
 #guided-form .guided-zones input[type="checkbox"] { display:inline-block; width:1rem; min-height:1rem; margin:0; accent-color:var(--blue); }
+
+#guided-zone-options { max-height:15rem; overflow-y:auto; }
+#guided-other-label:not([hidden]) { display:block; margin-top:.65rem; }
+@media (min-width:761px) { .brand { width:136.4px; } }

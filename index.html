@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=barrios-2">
   <script src="propiedades.js" defer></script>
   <script src="sitio.js" defer></script>
-  <script src="buscador.js" defer></script>
+  <script src="buscador.js?v=barrios-2" defer></script>
 </head>
 <body>
   <a class="skip" href="#contenido">Ir al contenido</a>
@@ -58,8 +58,27 @@
           <label>Presupuesto máximo<input name="presupuesto" type="number" min="1" step="1" placeholder="Sin tope"></label>
           <label>Moneda<select name="moneda"><option>USD</option><option>ARS</option></select></label>
           <details class="guided-zones">
-            <summary>Barrios o zonas <span id="guided-zone-summary">Todas</span></summary>
-            <fieldset><legend>Elegí uno o varios barrios</legend><div id="guided-zone-options"></div></fieldset>
+            <summary>Barrios o zonas <span id="guided-zone-summary">Todos</span></summary>
+            <fieldset><legend>Elegí uno o varios barrios</legend><div id="guided-zone-options">
+                <label><input type="checkbox" id="guided-all-zones" checked> Todos</label>
+                <label><input type="checkbox" name="zonas" value="Alberdi"> Alberdi</label>
+                <label><input type="checkbox" name="zonas" value="Alta Córdoba"> Alta Córdoba</label>
+                <label><input type="checkbox" name="zonas" value="Argüello"> Argüello</label>
+                <label><input type="checkbox" name="zonas" value="Cerro de las Rosas"> Cerro de las Rosas</label>
+                <label><input type="checkbox" name="zonas" value="Centro"> Centro</label>
+                <label><input type="checkbox" name="zonas" value="Ciudad Universitaria"> Ciudad Universitaria</label>
+                <label><input type="checkbox" name="zonas" value="Cofico"> Cofico</label>
+                <label><input type="checkbox" name="zonas" value="General Paz"> General Paz</label>
+                <label><input type="checkbox" name="zonas" value="Güemes"> Güemes</label>
+                <label><input type="checkbox" name="zonas" value="Jardín"> Jardín</label>
+                <label><input type="checkbox" name="zonas" value="Juniors"> Juniors</label>
+                <label><input type="checkbox" name="zonas" value="Nueva Córdoba"> Nueva Córdoba</label>
+                <label><input type="checkbox" name="zonas" value="Parque Capital"> Parque Capital</label>
+                <label><input type="checkbox" name="zonas" value="Urca"> Urca</label>
+                <label><input type="checkbox" name="zonas" value="Villa Belgrano"> Villa Belgrano</label>
+                <label><input type="checkbox" id="guided-other-zone"> Otro</label>
+              </div>
+              <label id="guided-other-label" hidden>¿Qué barrio o zona?<input name="otraZona" id="guided-other-input" maxlength="80" placeholder="Escribí el barrio o zona" disabled></label></fieldset>
           </details>
         </div>
         <fieldset class="guided-preferences">

@@ -24,4 +24,4 @@ Las imágenes de muestra se sirven desde Unsplash.
 En cada ficha, agregá `monto` como número y `moneda` como `"ARS"` o `"USD"` cuando el precio esté confirmado. En `caracteristicas` podés completar `cochera`, `balcon` y `jardin` con `true` o `false`. Omití los valores pendientes. Una propiedad con un requisito sin confirmar no se presenta como coincidencia.
 
 
-La lista de zonas combina los barrios de las fichas activas con `zonasServicio` en `buscador.js`. Usá esa lista para incluir barrios donde UZ recibe consultas aunque todavía no tenga fichas publicadas.
+La lista de zonas combina los barrios predefinidos en `index.html` con los barrios de las fichas activas. El visitante puede seleccionar todos los barrios o indicar otro.

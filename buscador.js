@@ -3,21 +3,24 @@ const resultadosGuiados = document.querySelector("#guided-results");
 const estadoGuiado = document.querySelector("#guided-status");
 const tarjetasGuiadas = document.querySelector("#guided-cards");
 const enviarBusqueda = document.querySelector("#guided-whatsapp");
-const zonasServicio = ["Centro", "General Paz", "Nueva Córdoba", "Parque Capital", "Villa Belgrano"];
 const resumenZonas = document.querySelector("#guided-zone-summary");
+const todasZonas = document.querySelector("#guided-all-zones");
+const otraZona = document.querySelector("#guided-other-zone");
+const etiquetaOtraZona = document.querySelector("#guided-other-label");
+const campoOtraZona = document.querySelector("#guided-other-input");
 const opcionesZonas = document.querySelector("#guided-zone-options");
-const zonasDisponibles = new Map();
-for (const barrio of [...zonasServicio, ...catalogo.map(propiedad => propiedad.barrio)]) {
-  zonasDisponibles.set(normalizarZona(barrio), barrio);
-}
-for (const barrio of [...zonasDisponibles.values()].sort((a, b) => a.localeCompare(b, "es"))) {
-  const opcion = elemento("input");
+const barriosOfrecidos = new Set([...opcionesZonas.querySelectorAll('[name="zonas"]')].map(opcion => normalizarZona(opcion.value)));
+for (const propiedad of catalogo) {
+  const barrio = normalizarZona(propiedad.barrio);
+  if (!barrio || barriosOfrecidos.has(barrio)) continue;
+  barriosOfrecidos.add(barrio);
+  const opcion = document.createElement("input");
   opcion.type = "checkbox";
   opcion.name = "zonas";
-  opcion.value = barrio;
-  const etiqueta = elemento("label");
-  etiqueta.append(opcion, barrio);
-  opcionesZonas.append(etiqueta);
+  opcion.value = propiedad.barrio;
+  const etiqueta = document.createElement("label");
+  etiqueta.append(opcion, " " + propiedad.barrio);
+  opcionesZonas.insertBefore(etiqueta, otraZona.closest("label"));
 }
 const atributosBusqueda = { cochera: "cochera", balcon: "balcón", jardin: "jardín" };
 
@@ -26,11 +29,14 @@ function normalizarZona(zona) {
 }
 
 function leerBusqueda(datos) {
+  const zonas = datos.getAll("zonas");
+  const otra = (datos.get("otraZona") || "").trim();
+  if (otra) zonas.push(otra);
   return {
     operacion: datos.get("operacion"),
     presupuesto: Number(datos.get("presupuesto")) || null,
     moneda: datos.get("moneda"),
-    zonas: datos.getAll("zonas"),
+    zonas,
     requisitos: Object.keys(atributosBusqueda).filter(clave => datos.get(clave) === "requisito"),
     preferencias: Object.keys(atributosBusqueda).filter(clave => datos.get(clave) === "preferencia")
   };
@@ -72,11 +78,27 @@ function mensajeBusqueda(busqueda) {
 
 function actualizarMensaje() {
   const busqueda = leerBusqueda(new FormData(buscador));
-  resumenZonas.textContent = busqueda.zonas.length ? busqueda.zonas.join(", ") : "Todas";
+  resumenZonas.textContent = busqueda.zonas.length ? busqueda.zonas.join(", ") : "Todos";
   enviarBusqueda.href = whatsapp(mensajeBusqueda(busqueda));
 }
 
-buscador.addEventListener("input", () => {
+function sincronizarZonas(origen) {
+  const barrios = [...opcionesZonas.querySelectorAll('[name="zonas"]')];
+  if (origen === todasZonas && todasZonas.checked) {
+    for (const barrio of barrios) barrio.checked = false;
+    otraZona.checked = false;
+  }
+  todasZonas.checked = !otraZona.checked && !barrios.some(barrio => barrio.checked);
+  etiquetaOtraZona.hidden = !otraZona.checked;
+  campoOtraZona.disabled = !otraZona.checked;
+  campoOtraZona.required = otraZona.checked;
+  campoOtraZona.setCustomValidity(otraZona.checked && !campoOtraZona.value.trim()
+    ? "Escribí el barrio o zona que buscás."
+    : "");
+}
+
+buscador.addEventListener("input", evento => {
+  sincronizarZonas(evento.target);
   actualizarMensaje();
   resultadosGuiados.hidden = true;
   tarjetasGuiadas.replaceChildren();
@@ -103,4 +125,5 @@ buscador.addEventListener("submit", evento => {
   resultadosGuiados.hidden = false;
   actualizarMensaje();
 });
+sincronizarZonas();
 actualizarMensaje();
