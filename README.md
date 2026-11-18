@@ -17,3 +17,8 @@ Subí los archivos a la raíz del repositorio. En Settings → Pages, elegí Dep
 Antes del lanzamiento, cargá propiedades reales, desactivá las fichas de muestra, reemplazá la imagen ilustrativa de portada, completá MP XXXX en `index.html` y confirmá los destinos de WhatsApp. Cuando esté lista para aparecer en buscadores, quitá la etiqueta `noindex`.
 
 Las imágenes de muestra se sirven desde Unsplash.
+
+
+## Datos para la búsqueda guiada
+
+En cada ficha, agregá `monto` como número y `moneda` como `"ARS"` o `"USD"` cuando el precio esté confirmado. En `caracteristicas` podés completar `cochera`, `balcon` y `jardin` con `true` o `false`. Omití los valores pendientes. Una propiedad con un requisito sin confirmar no se presenta como coincidencia.

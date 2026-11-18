@@ -14,13 +14,14 @@
   <link rel="stylesheet" href="styles.css">
   <script src="propiedades.js" defer></script>
   <script src="sitio.js" defer></script>
+  <script src="buscador.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#contenido">Ir al contenido</a>
   <header class="header">
     <div class="wrap nav">
       <a class="brand" href="./" aria-label="UZ Bienes Raíces, inicio"><img src="logo.svg" alt="UZ Bienes Raíces"></a>
-      <nav aria-label="Principal"><a href="#propiedades">Propiedades</a><a href="#propietarios">Propietarios</a><a href="#administracion">Administración</a><a href="#contacto">Contacto</a></nav>
+      <nav aria-label="Principal"><a href="#propiedades">Propiedades</a><a href="#buscador">Búsqueda guiada</a><a href="#propietarios">Propietarios</a><a href="#administracion">Administración</a><a href="#contacto">Contacto</a></nav>
       <a class="button outline" href="https://wa.link/zlevof">WhatsApp ↗</a>
     </div>
   </header>
@@ -45,6 +46,31 @@
       <p id="count" role="status"></p>
       <div class="cards" id="cards"></div>
       <noscript><p>Activá JavaScript para explorar el catálogo o consultanos por <a href="https://wa.link/zlevof">WhatsApp</a>.</p></noscript>
+    </section>
+    <section class="wrap guided" id="buscador" aria-labelledby="guided-title">
+      <div class="guided-intro">
+        <h2 id="guided-title">¿Qué estás buscando?</h2>
+        <p>Decinos tu presupuesto, las zonas que te interesan y qué tiene que tener la propiedad. Podés mandar la búsqueda a UZ por WhatsApp.</p>
+      </div>
+      <form id="guided-form">
+        <div class="guided-fields">
+          <label>Operación<select name="operacion" required><option>Venta</option><option>Alquiler</option></select></label>
+          <label>Presupuesto máximo<input name="presupuesto" type="number" min="1" step="1" placeholder="Sin tope"></label>
+          <label>Moneda<select name="moneda"><option>USD</option><option>ARS</option></select></label>
+          <label class="guided-zones">Barrios o zonas<input name="zonas" maxlength="150" placeholder="Ej. General Paz, Centro" aria-describedby="guided-zones-help"><small id="guided-zones-help">Si te interesan varias zonas, separalas con comas.</small></label>
+        </div>
+        <fieldset class="guided-preferences">
+          <legend>¿Qué tiene que tener?</legend>
+          <label>Cochera<select name="cochera"><option value="">Me da igual</option><option value="requisito">Imprescindible</option><option value="preferencia">Deseable</option></select></label>
+          <label>Balcón<select name="balcon"><option value="">Me da igual</option><option value="requisito">Imprescindible</option><option value="preferencia">Deseable</option></select></label>
+          <label>Jardín<select name="jardin"><option value="">Me da igual</option><option value="requisito">Imprescindible</option><option value="preferencia">Deseable</option></select></label>
+        </fieldset>
+        <div class="actions"><button class="button" type="submit">Buscar coincidencias ↗</button><a class="button outline" id="guided-whatsapp" href="https://wa.link/zlevof">Enviar mi búsqueda a UZ ↗</a></div>
+      </form>
+      <div class="guided-results" id="guided-results" hidden>
+        <p id="guided-status" role="status"></p>
+        <div class="cards" id="guided-cards"></div>
+      </div>
     </section>
     <section class="owners" id="propietarios">
       <div class="wrap split">

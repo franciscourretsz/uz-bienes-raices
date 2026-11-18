@@ -80,3 +80,16 @@ dialog::backdrop { background:#0a1f3dbb; }
 }
 @media(max-width:480px) { .cards { grid-template-columns:1fr; } .wrap { width:calc(100% - 2rem); } .filters { gap:.6rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+.guided { padding-bottom:clamp(3rem,7vw,6.5rem); }
+.guided-intro p { max-width:62ch; color:var(--graphite); }
+#guided-form { background:var(--ivory); padding:clamp(1rem,4vw,2.5rem); }
+.guided-fields { display:grid; grid-template-columns:1fr 1fr .75fr 1.75fr; gap:1rem; }
+#guided-form label,#guided-form legend { font-size:.85rem; font-weight:600; }
+#guided-form input { display:block; width:100%; min-height:48px; margin-top:.35rem; padding:.6rem; border:1px solid var(--stone); border-radius:0; background:var(--paper); color:var(--blue); font:inherit; font-weight:400; }
+#guided-form small { display:block; margin-top:.3rem; font-weight:400; }
+.guided-preferences { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; padding:1rem 0; margin:1rem 0; border:0; border-top:1px solid var(--stone); }
+.guided-results { margin-top:1.5rem; }
+.guided-results .card-body > :last-child { margin-bottom:0; }
+@media(max-width:760px) { .guided-fields { grid-template-columns:repeat(3,minmax(0,1fr)); } .guided-zones { grid-column:1/-1; } }
+@media(max-width:520px) { .guided-fields,.guided-preferences { grid-template-columns:repeat(2,minmax(0,1fr)); } }

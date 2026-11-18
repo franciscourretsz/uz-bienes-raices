@@ -10,6 +10,9 @@ window.catalogoUZ = [
     barrio: "Parque Capital",
     titulo: "Casa con jardín",
     precio: "USD 145.000",
+    monto: 145000,
+    moneda: "USD",
+    caracteristicas: { cochera: true, jardin: true },
     descripcion: "Ejemplo de una casa con espacios abiertos y jardín. La ficha muestra cómo se presenta una propiedad de venta.",
     detalles: ["3 dormitorios", "2 baños", "180 m² cubiertos", "Cochera"],
     fotos: [
@@ -25,6 +28,7 @@ window.catalogoUZ = [
     barrio: "Nueva Córdoba",
     titulo: "Departamento luminoso",
     precio: "Consultar precio",
+    caracteristicas: { balcon: true },
     descripcion: "Ejemplo de una ficha de alquiler con datos de superficie y ambientes.",
     detalles: ["1 dormitorio", "1 baño", "52 m² cubiertos"],
     fotos: [
@@ -40,6 +44,9 @@ window.catalogoUZ = [
     barrio: "Villa Belgrano",
     titulo: "Casa con pileta",
     precio: "USD 220.000",
+    monto: 220000,
+    moneda: "USD",
+    caracteristicas: { cochera: true, jardin: true },
     descripcion: "Ejemplo de una ficha de venta para una casa con jardín y pileta.",
     detalles: ["3 dormitorios", "3 baños", "210 m² cubiertos", "Cochera"],
     fotos: [
