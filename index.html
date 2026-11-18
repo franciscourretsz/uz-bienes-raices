@@ -57,7 +57,10 @@
           <label>Operación<select name="operacion" required><option>Venta</option><option>Alquiler</option></select></label>
           <label>Presupuesto máximo<input name="presupuesto" type="number" min="1" step="1" placeholder="Sin tope"></label>
           <label>Moneda<select name="moneda"><option>USD</option><option>ARS</option></select></label>
-          <label class="guided-zones">Barrios o zonas<input name="zonas" maxlength="150" placeholder="Ej. General Paz, Centro" aria-describedby="guided-zones-help"><small id="guided-zones-help">Si te interesan varias zonas, separalas con comas.</small></label>
+          <details class="guided-zones">
+            <summary>Barrios o zonas <span id="guided-zone-summary">Todas</span></summary>
+            <fieldset><legend>Elegí uno o varios barrios</legend><div id="guided-zone-options"></div></fieldset>
+          </details>
         </div>
         <fieldset class="guided-preferences">
           <legend>¿Qué tiene que tener?</legend>

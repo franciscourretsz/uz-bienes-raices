@@ -3,6 +3,22 @@ const resultadosGuiados = document.querySelector("#guided-results");
 const estadoGuiado = document.querySelector("#guided-status");
 const tarjetasGuiadas = document.querySelector("#guided-cards");
 const enviarBusqueda = document.querySelector("#guided-whatsapp");
+const zonasServicio = ["Centro", "General Paz", "Nueva Córdoba", "Parque Capital", "Villa Belgrano"];
+const resumenZonas = document.querySelector("#guided-zone-summary");
+const opcionesZonas = document.querySelector("#guided-zone-options");
+const zonasDisponibles = new Map();
+for (const barrio of [...zonasServicio, ...catalogo.map(propiedad => propiedad.barrio)]) {
+  zonasDisponibles.set(normalizarZona(barrio), barrio);
+}
+for (const barrio of [...zonasDisponibles.values()].sort((a, b) => a.localeCompare(b, "es"))) {
+  const opcion = elemento("input");
+  opcion.type = "checkbox";
+  opcion.name = "zonas";
+  opcion.value = barrio;
+  const etiqueta = elemento("label");
+  etiqueta.append(opcion, barrio);
+  opcionesZonas.append(etiqueta);
+}
 const atributosBusqueda = { cochera: "cochera", balcon: "balcón", jardin: "jardín" };
 
 function normalizarZona(zona) {
@@ -14,7 +30,7 @@ function leerBusqueda(datos) {
     operacion: datos.get("operacion"),
     presupuesto: Number(datos.get("presupuesto")) || null,
     moneda: datos.get("moneda"),
-    zonas: (datos.get("zonas") || "").split(",").map(zona => zona.trim()).filter(Boolean),
+    zonas: datos.getAll("zonas"),
     requisitos: Object.keys(atributosBusqueda).filter(clave => datos.get(clave) === "requisito"),
     preferencias: Object.keys(atributosBusqueda).filter(clave => datos.get(clave) === "preferencia")
   };
@@ -56,6 +72,7 @@ function mensajeBusqueda(busqueda) {
 
 function actualizarMensaje() {
   const busqueda = leerBusqueda(new FormData(buscador));
+  resumenZonas.textContent = busqueda.zonas.length ? busqueda.zonas.join(", ") : "Todas";
   enviarBusqueda.href = whatsapp(mensajeBusqueda(busqueda));
 }
 
