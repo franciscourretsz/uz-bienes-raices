@@ -103,4 +103,4 @@ dialog::backdrop { background:#0a1f3dbb; }
 
 #guided-zone-options { max-height:15rem; overflow-y:auto; }
 #guided-other-label:not([hidden]) { display:block; margin-top:.65rem; }
-@media (min-width:761px) { .brand { width:136.4px; } }
+@media (min-width:761px) { .brand { width:156.86px; } }
