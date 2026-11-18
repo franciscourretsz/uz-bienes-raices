@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Propiedades, tasaciones y administración inmobiliaria en Córdoba Capital. UZ Bienes Raíces, desde 2006.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a1f3d">
+  <title>UZ Bienes Raíces | Córdoba Capital</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="propiedades.js" defer></script>
+  <script src="sitio.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="./" aria-label="UZ Bienes Raíces, inicio"><img src="logo.svg" alt="UZ Bienes Raíces"></a>
+      <nav aria-label="Principal"><a href="#propiedades">Propiedades</a><a href="#propietarios">Propietarios</a><a href="#administracion">Administración</a><a href="#contacto">Contacto</a></nav>
+      <a class="button outline" href="https://wa.link/zlevof">WhatsApp ↗</a>
+    </div>
+  </header>
+  <main id="contenido">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="label">Córdoba Capital · Desde 2006</p>
+        <h1>Encontrá tu próxima propiedad.</h1>
+        <p>Casas, departamentos y terrenos en Córdoba. Te acompañamos desde la primera búsqueda hasta la firma.</p>
+        <div class="actions"><a class="button" data-operation="Venta" href="#propiedades">Comprar <span aria-hidden="true">↗</span></a><a class="button outline" data-operation="Alquiler" href="#propiedades">Alquilar <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <figure class="hero-image"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;w=1600&amp;q=83" alt="Exterior de una casa contemporánea con jardín y piscina" fetchpriority="high"><figcaption>Imagen ilustrativa</figcaption></figure>
+    </section>
+    <section class="wrap catalog" id="propiedades" aria-labelledby="catalog-title">
+      <div class="section-heading"><h2 id="catalog-title">Propiedades</h2><p id="listing-note">Catálogo de muestra. Las fichas ilustran cómo se verán las publicaciones.</p></div>
+      <div class="filters">
+        <label>Operación<select id="operation"><option value="">Todas</option><option>Venta</option><option>Alquiler</option></select></label>
+        <label>Tipo de inmueble<select id="type"><option value="">Todos los tipos</option></select></label>
+        <label>Barrio<select id="area"><option value="">Todos los barrios</option></select></label>
+        <button class="button outline" id="reset" type="button">Limpiar filtros</button>
+      </div>
+      <p id="count" role="status"></p>
+      <div class="cards" id="cards"></div>
+      <noscript><p>Activá JavaScript para explorar el catálogo o consultanos por <a href="https://wa.link/zlevof">WhatsApp</a>.</p></noscript>
+    </section>
+    <section class="owners" id="propietarios">
+      <div class="wrap split">
+        <div><p class="label">Para propietarios</p><h2>Quiero vender o alquilar mi propiedad</h2><p>Contanos qué propiedad tenés y qué querés hacer con ella. Te orientamos sobre su valor, cómo presentarla y los próximos pasos.</p></div>
+        <div class="owner-links">
+          <a data-message="Hola, quiero conversar sobre la venta de mi propiedad.">Quiero vender <span aria-hidden="true">↗</span></a>
+          <a data-message="Hola, quiero poner mi propiedad en alquiler.">Quiero poner en alquiler <span aria-hidden="true">↗</span></a>
+          <a data-message="Hola, quiero solicitar una tasación.">Quiero una tasación <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="wrap services" id="administracion">
+      <h2>Administración inmobiliaria</h2>
+      <div class="split">
+        <article><h3>Alquileres</h3><p>Para propietarios que buscan delegar el seguimiento del contrato, los cobros y los vencimientos.</p><a data-message="Hola, quiero consultar por la administración de un alquiler.">Consultar por alquileres ↗</a></article>
+        <article><h3>Consorcios</h3><p>Para edificios que necesitan un equipo que acompañe la gestión cotidiana del consorcio.</p><a data-message="Hola, quiero consultar por la administración de un consorcio.">Consultar por consorcios ↗</a></article>
+      </div>
+    </section>
+    <section class="about" aria-labelledby="about-title"><div class="wrap split">
+      <img src="logo.svg" alt="UZ Bienes Raíces, desde 2006" loading="lazy">
+      <div><p class="label">Una inmobiliaria familiar</p><h2 id="about-title">Te acompañamos en una decisión importante.</h2><p>Comprar, vender o alquilar cambia muchas cosas en la vida. Desde 2006 trabajamos en Córdoba para que puedas tomar esa decisión con información clara y con alguien a quien llamar durante el proceso.</p></div>
+    </div></section>
+  </main>
+  <footer id="contacto"><div class="wrap split">
+    <div><h2>Hablemos</h2><address>Vieytes 1313, PB local 2<br>Córdoba Capital, Argentina</address><p>Francisco Urrets Zavalia · Corredor inmobiliario · MP XXXX</p></div>
+    <div class="actions"><a class="button outline" href="https://wa.link/zlevof">WhatsApp ↗</a><a class="button outline" href="https://www.instagram.com/uzbienesraices/">Instagram ↗</a></div>
+  </div></footer>
+  <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-inner"><form method="dialog"><button class="button outline close">Cerrar ✕</button></form><div id="detail-content"></div></div></dialog>
+</body>
+</html>
